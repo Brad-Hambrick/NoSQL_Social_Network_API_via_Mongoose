@@ -1,0 +1,27 @@
+{
+  "name": "nosql_social_network_api_via_mongoose",
+  "version": "1.0.0",
+  "description": "This project was completed in order to showcase my ability to create a NoSQL API that could be utilized for a social network application.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Brad-Hambrick/NoSQL_Social_Network_API_via_Mongoose.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Brad-Hambrick/NoSQL_Social_Network_API_via_Mongoose/issues"
+  },
+  "homepage": "https://github.com/Brad-Hambrick/NoSQL_Social_Network_API_via_Mongoose#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "moment": "^2.29.4",
+    "mongoose": "^6.8.0",
+    "nodemon": "^2.0.20"
+  }
+}
