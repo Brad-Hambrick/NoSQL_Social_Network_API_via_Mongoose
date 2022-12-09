@@ -1,4 +1,5 @@
 const { User, Thought } = require("../models");
+const version = "-__v";
 
 module.exports = {
   getThoughts(req, res) {
@@ -9,7 +10,7 @@ module.exports = {
 
   getThoughtById(req, res) {
     Thought.findOne({ _id: req.params.thoughtId })
-      .select("-__v")
+      .select(version)
       .then((thought) =>
         !thought
           ? res.status(404).json({ message: "No thought found with that ID" })

@@ -20,8 +20,8 @@ mongoose.connect(
   }
 );
 
-mongoose.set("strictQuery", true);
+// mongoose.set("strictQuery", true);
 
-mongoose.set("debug", true);
+// mongoose.set("debug", true);
 
 app.listen(PORT, () => console.log(`Connected on localhost:${PORT}`));

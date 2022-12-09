@@ -1,8 +1,9 @@
 const { User, Thought } = require("../models");
+const version = "-__v";
 
 module.exports = {
   getUser(req, res) {
-    User.find({})
+    User.find()
       .then((user) => res.json(user))
       .catch((err) => res.status(500).json(err));
   },
@@ -11,7 +12,7 @@ module.exports = {
     User.findOne({ _id: req.params.userId })
       .populate("thought")
       .populate("friends")
-      .select("__v")
+      .select(version)
       .then((user) =>
         !user
           ? res.status(404).json({ message: "No user found with that ID" })
@@ -21,7 +22,7 @@ module.exports = {
   },
 
   createUser(req, res) {
-    User.create(req, body)
+    User.create(req.body)
       .then((user) => res.json(user))
       .catch((err) => {
         console.log(err);
@@ -30,16 +31,20 @@ module.exports = {
   },
 
   updateUser(req, res) {
+    console.log(req.params);
+    console.log(req.body);
     User.findOneAndUpdate(
       { _id: req.params.userId },
       { $set: req.body },
       { runValidators: true, new: true }
     )
-      .then((user) =>
+      .then((user) => {
+        console.log("testing______");
+        console.log(user);
         !user
           ? res.status(404).json({ message: "No user found with that ID" })
-          : res.json(user)
-      )
+          : res.json(user);
+      })
       .catch((err) => res.status(500).json(err));
   },
 
@@ -48,7 +53,7 @@ module.exports = {
       .then((user) =>
         !user
           ? res.status(404).json({ message: "No user found with that ID" })
-          : Thought.deleteMany({ _id: { $in: user.thoughts } })
+          : Thought.deleteMany({ _id: { $in: user.thought } })
       )
       .then(() =>
         res.json({ message: "User and their thoughts have been deleted" })
